@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./reset.css" />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <main>
+      <h1>die the game</h1>
+      <div class="board container">
+        <section class="player player0 activePlayer">
+          <h2 class="player0Header">player one</h2>
+          <div class="currentScore0"></div>
+          <div class="totalScore0"></div>
+        </section>
+        <section class="player player1 activePlayer">
+          <h2 class="player1Header">player two</h2>
+          <div class="currentScore1"></div>
+          <div class="totalScore1"></div>
+        </section>
+        <div class="btnContainer">
+          <div class="wrapper">
+            <button class="btn reset">reset</button>
+          </div>
+          <div class="wrapper">
+            <button class="btn roll">roll</button>
+          </div>
+          <div class="wrapper">
+            <button class="btn hold">hold</button>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script src="./index.js"></script>
+  </body>
+</html>
