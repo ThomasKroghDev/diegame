@@ -24,6 +24,15 @@ const switchPlayer = () => {
   player2.classList.toggle('activePlayer');
 };
 
+const setWin = () => {
+  playing = false;
+  document.querySelector(`.currScore${activePlayer}`).textContent = 0;
+  document.querySelector(`.player${activePlayer}`).classList.add('winner');
+  document
+    .querySelector(`.player${activePlayer}`)
+    .classList.remove('activePlayer');
+};
+
 roll.addEventListener('click', () => {
   if (playing) {
     const d20Value = Math.floor(Math.random() * 20) + 1;
@@ -46,8 +55,45 @@ roll.addEventListener('click', () => {
           scores[activePlayer];
         switchPlayer();
       }
+      if (d20Value === 10) {
+        let double = (currentScore += d20Value) * 2;
+        currentScore += double;
+        document.querySelector(`.currScore${activePlayer}`).textContent =
+          currentScore;
+      }
+      if (scores[activePlayer] >= 500) {
+        setWin();
+      }
     } else {
       switchPlayer();
     }
   }
+});
+
+hold.addEventListener('click', () => {
+  if (playing) {
+    scores[activePlayer] += currentScore;
+    document.querySelector(`.score${activePlayer}`).textContent =
+      scores[activePlayer];
+
+    if (scores[activePlayer] >= 500) {
+      setWin();
+    } else {
+      switchPlayer();
+    }
+  }
+});
+
+reset.addEventListener('click', () => {
+  playing = true;
+  scores.forEach(() => (score = 0));
+  document.querySelector(`.player${activePlayer}`).classList.remove('winner');
+  document.querySelector(`.currScore0`).textContent = 0;
+  document.querySelector(`.currScore1`).textContent = 0;
+  document.querySelector(`.score0`).textContent = 0;
+  document.querySelector(`.score1`).textContent = 0;
+  activePlayer = 0;
+  document
+    .querySelector(`.player${activePlayer}`)
+    .classList.add('activePlayer');
 });
